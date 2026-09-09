@@ -128,33 +128,61 @@
         }
 
         /* ============================================================
-           HERO SECTION
+           HERO SECTION (PRINTING IMAGE)
            ============================================================ */
         .hero {
-            background: linear-gradient(rgba(11, 31, 42, 0.88), rgba(11, 31, 42, 0.95)),
-                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80');
+            background: linear-gradient(rgba(11, 31, 42, 0.85), rgba(11, 31, 42, 0.92)),
+                        url('https://images.unsplash.com/photo-1562408590-e32931084e23?auto=format&fit=crop&w=1200&q=80');
             background-size: cover;
             background-position: center;
             color: #ffffff;
-            padding: 100px 20px 60px;
+            padding: 120px 20px 80px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 60%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 700;
             margin-bottom: 12px;
             line-height: 1.2;
+            position: relative;
+            z-index: 1;
         }
 
-        .hero h1 span { color: #D4AF37; }
+        .hero h1 span {
+            color: #D4AF37;
+            background: linear-gradient(135deg, #D4AF37, #f5e6a3, #D4AF37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
         .hero .tagline {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             max-width: 650px;
-            margin: 0 auto 20px;
+            margin: 0 auto 12px;
             opacity: 0.9;
             line-height: 1.7;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-buttons {
@@ -162,6 +190,9 @@
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .btn-primary {
@@ -198,6 +229,46 @@
         .btn-outline:hover {
             background: #D4AF37;
             color: #0b1f2a;
+        }
+
+        /* ============================================================
+           HERO STATS
+           ============================================================ */
+        .hero-stats {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-stats div {
+            text-align: center;
+        }
+
+        .hero-stats strong {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #D4AF37;
+        }
+
+        .hero-stats span {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .hero-stats { gap: 20px; }
+            .hero-stats strong { font-size: 2rem; }
         }
 
         /* ============================================================
@@ -400,7 +471,6 @@
     <!-- ===== NAVIGATION ===== -->
     <nav>
         <div class="logo">
-            <!-- Replace with your actual logo image -->
             <img src="img/drecot-logo.png" alt="Drecot Printing Press Logo" class="logo-img">
             <div class="logo-text">
                 <span class="brand-name">Drecot <span>Printing</span></span>
@@ -409,9 +479,10 @@
         </div>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
         <div class="nav-links" id="navLinks">
-            <a href="#services">Services</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
             <a href="https://kwashate.netlify.app" class="nav-cta">KWASHATE</a>
         </div>
     </nav>
@@ -424,8 +495,22 @@
             menus, business cards, and event materials.
         </p>
         <div class="hero-buttons">
-            <a href="#contact" class="btn-primary">Get a Quote</a>
-            <a href="#services" class="btn-outline">Our Services</a>
+            <a href="contact.html" class="btn-primary">Get a Quote</a>
+            <a href="services.html" class="btn-outline">Our Services</a>
+        </div>
+        <div class="hero-stats">
+            <div>
+                <strong>100+</strong>
+                <span>Happy Clients</span>
+            </div>
+            <div>
+                <strong>500+</strong>
+                <span>Print Jobs Completed</span>
+            </div>
+            <div>
+                <strong>24hr</strong>
+                <span>Fast Turnaround</span>
+            </div>
         </div>
     </header>
 
