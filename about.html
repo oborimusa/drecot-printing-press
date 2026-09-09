@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us – Drecot Printing Press</title>
+    <!-- Luxury Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f5f6f8; color: #2c3e50; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        nav {
+            background: #0b1f2a;
+            color: #ffffff;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-name span { color: #D4AF37; }
+
+        .tagline {
+            font-size: 0.6rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #D4AF37;
+            user-select: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #D4AF37; }
+
+        .nav-cta {
+            background: #D4AF37;
+            color: #0b1f2a !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #e6c04c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                background: #0b1f2a;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 999;
+                border-bottom: 2px solid #D4AF37;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; text-align: center; padding: 8px 0; }
+            .nav-cta { width: 80%; text-align: center; }
+            .logo-img { width: 40px; height: 40px; }
+            .brand-name { font-size: 1.2rem; }
+            .tagline { font-size: 0.5rem; }
+        }
+
+        /* ============================================================
+           HERO HEADER
+           ============================================================ */
+        .page-header {
+            background: linear-gradient(rgba(11, 31, 42, 0.88), rgba(11, 31, 42, 0.95)),
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 span { color: #D4AF37; }
+
+        .page-header .tagline {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           CONTAINER
+           ============================================================ */
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        /* ============================================================
+           ABOUT STORY
+           ============================================================ */
+        .about-story {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f7;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .about-story h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .about-story h2 span { color: #D4AF37; }
+
+        .about-story p {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 16px;
+        }
+
+        /* ============================================================
+           MISSION & VISION
+           ============================================================ */
+        .vision-mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .vm-card {
+            background: #0b1f2a;
+            border-radius: 16px;
+            padding: 40px;
+            border-left: 6px solid #D4AF37;
+        }
+
+        .vm-card h3 {
+            color: #D4AF37;
+            font-size: 1.8rem;
+            margin-bottom: 12px;
+        }
+
+        .vm-card p {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 768px) {
+            .vision-mission { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================================
+           CORE VALUES
+           ============================================================ */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .value-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #eef2f7;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-color: #D4AF37;
+        }
+
+        .value-card .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-size: 1.4rem;
+            color: #0b1f2a;
+            margin-bottom: 8px;
+        }
+
+        .value-card p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           WHY CHOOSE US
+           ============================================================ */
+        .why-choose {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f7;
+            margin-bottom: 50px;
+        }
+
+        .why-choose h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .why-choose h2 span { color: #D4AF37; }
+
+        .why-choose ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .why-choose li {
+            padding: 12px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #2c3e50;
+            border-bottom: 1px solid #eef2f7;
+        }
+
+        .why-choose li:last-child { border-bottom: none; }
+
+        .why-choose li .check {
+            color: #D4AF37;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+           CONTACT
+           ============================================================ */
+        .contact-section {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f7;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .contact-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .contact-section h2 span { color: #D4AF37; }
+
+        .contact-section p {
+            color: #7f8c8d;
+            margin-bottom: 24px;
+        }
+
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: #f8f9fa;
+            padding: 12px 24px;
+            border-radius: 40px;
+            border: 1px solid #eef2f7;
+        }
+
+        .contact-item .icon {
+            font-size: 1.5rem;
+        }
+
+        .contact-item .info {
+            font-weight: 600;
+            color: #0b1f2a;
+        }
+
+        /* ============================================================
+           WHATSAPP FLOATING BUTTON
+           ============================================================ */
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 999;
+            font-size: 0.95rem;
+        }
+
+        .wa-float:hover { transform: scale(1.05); }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.2rem; }
+            .about-story { padding: 30px; }
+            .why-choose { padding: 30px; }
+            .contact-section { padding: 30px; }
+            .contact-details { gap: 12px; }
+            .contact-item { padding: 10px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <div class="logo">
+            <img src="img/drecot-logo.png" alt="Drecot Printing Press Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="brand-name">Drecot <span>Printing</span></span>
+                <span class="tagline">Press &amp; Services</span>
+            </div>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://kwashate.netlify.app" class="nav-cta">KWASHATE</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO HEADER ===== -->
+    <header class="page-header">
+        <h1>About <span>Us</span></h1>
+        <p class="tagline">
+            We are a registered printing company dedicated to delivering high-quality printing solutions
+            for businesses, events, and hospitality brands.
+        </p>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="container">
+
+        <!-- ===== ABOUT STORY ===== -->
+        <div class="about-story">
+            <h2>Our <span>Story</span></h2>
+            <p>
+                Drecot Printing Press was founded with a simple mission: to provide high-quality printing
+                services that help businesses and events make a lasting impression. We understand that
+                print is more than just ink on paper—it's an extension of your brand.
+            </p>
+            <p>
+                From our humble beginnings, we have grown into a trusted printing partner for hotels,
+                restaurants, event organizers, and businesses across Nigeria. We are committed to
+                delivering excellence in every print, every time.
+            </p>
+        </div>
+
+        <!-- ===== MISSION & VISION ===== -->
+        <div class="vision-mission">
+            <div class="vm-card">
+                <h3>✨ Our Vision</h3>
+                <p>
+                    To become the leading printing company in Nigeria, known for exceptional quality,
+                    reliability, and creativity.
+                </p>
+            </div>
+            <div class="vm-card">
+                <h3>🎯 Our Mission</h3>
+                <p>
+                    To provide high-quality, affordable printing solutions that help our clients
+                    stand out and achieve their goals.
+                </p>
+            </div>
+        </div>
+
+        <!-- ===== CORE VALUES ===== -->
+        <div class="section-title" style="text-align: center; font-size: 2rem; margin-bottom: 30px;">
+            <span style="color: #0b1f2a;">Our Core <span style="color: #D4AF37;">Values</span></span>
+        </div>
+        <div class="section-subtitle" style="text-align: center; color: #7f8c8d; margin-bottom: 40px;">
+            The principles that guide everything we do.
+        </div>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <span class="icon">🏆</span>
+                <h3>Quality</h3>
+                <p>We never compromise on quality. Every print is held to the highest standard.</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">⏱️</span>
+                <h3>Reliability</h3>
+                <p>We deliver on time, every time. Your deadlines are our deadlines.</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">💡</span>
+                <h3>Creativity</h3>
+                <p>We help you stand out with creative, eye-catching designs.</p>
+            </div>
+            <div class="value-card">
+                <span class="icon">🤝</span>
+                <h3>Customer Focus</h3>
+                <p>We listen to your needs and deliver exactly what you want.</p>
+            </div>
+        </div>
+
+        <!-- ===== WHY CHOOSE US ===== -->
+        <div class="why-choose">
+            <h2>Why Choose <span>Us?</span></h2>
+            <ul>
+                <li>
+                    <span class="check">✓</span>
+                    <strong>Registered &amp; Legitimate:</strong> We are a CAC-registered business, so you can trust us with your print jobs.
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <strong>Premium Quality:</strong> We use the best materials and equipment to ensure your prints look professional.
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <strong>Fast Turnaround:</strong> We understand the importance of deadlines and deliver on time.
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <strong>Affordable Pricing:</strong> We offer competitive rates without compromising on quality.
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <strong>Experienced Team:</strong> Our team has years of experience in the printing industry.
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <strong>Parent Company:</strong> We are a subsidiary of Drecot Consults, a trusted hospitality support company.
+                </li>
+            </ul>
+        </div>
+
+        <!-- ===== CONTACT ===== -->
+        <div class="contact-section" id="contact">
+            <h2>Get In <span>Touch</span></h2>
+            <p>Ready to bring your ideas to life? Contact us today for a free quote.</p>
+            <div class="contact-details">
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <span class="info">08039661354</span>
+                </div>
+                <div class="contact-item">
+                    <span class="icon">📧</span>
+                    <span class="info">drecotprintingpress@gmail.com</span>
+                </div>
+            </div>
+            <a href="https://wa.me/2348039661354?text=Hello%20Drecot%20Printing%20Press!%20I%20would%20like%20a%20quote." class="btn-primary">📱 Get a Quote on WhatsApp</a>
+        </div>
+    </section>
+
+    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+    <a href="https://wa.me/2348039661354?text=Hello%20Drecot%20Printing%20Press!%20I%20need%20a%20quote." class="wa-float">💬 Chat with us</a>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navLinks");
+            menu.classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>

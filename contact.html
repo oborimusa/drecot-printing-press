@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us – Drecot Printing Press</title>
+    <!-- Luxury Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #f5f6f8; color: #2c3e50; line-height: 1.6; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        a { text-decoration: none; }
+
+        /* ============================================================
+           NAVIGATION
+           ============================================================ */
+        nav {
+            background: #0b1f2a;
+            color: #ffffff;
+            padding: 16px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .brand-name {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-name span { color: #D4AF37; }
+
+        .tagline {
+            font-size: 0.6rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hamburger {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #D4AF37;
+            user-select: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: #D4AF37; }
+
+        .nav-cta {
+            background: #D4AF37;
+            color: #0b1f2a !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #e6c04c;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: block; }
+            .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+                padding: 20px 0;
+                background: #0b1f2a;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                z-index: 999;
+                border-bottom: 2px solid #D4AF37;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; text-align: center; padding: 8px 0; }
+            .nav-cta { width: 80%; text-align: center; }
+            .logo-img { width: 40px; height: 40px; }
+            .brand-name { font-size: 1.2rem; }
+            .tagline { font-size: 0.5rem; }
+        }
+
+        /* ============================================================
+           HERO HEADER
+           ============================================================ */
+        .page-header {
+            background: linear-gradient(rgba(11, 31, 42, 0.88), rgba(11, 31, 42, 0.95)),
+                        url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 span { color: #D4AF37; }
+
+        .page-header .tagline {
+            font-size: 1.1rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* ============================================================
+           CONTAINER
+           ============================================================ */
+        .container { max-width: 1000px; margin: 0 auto; padding: 60px 20px; }
+
+        /* ============================================================
+           CONTACT METHODS GRID
+           ============================================================ */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-method {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            border: 1px solid #eef2f7;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            border-color: #D4AF37;
+        }
+
+        .contact-method .icon {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .contact-method h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0b1f2a;
+            margin-bottom: 8px;
+        }
+
+        .contact-method p {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .contact-method a {
+            color: #D4AF37;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+
+        /* ============================================================
+           CONTACT FORM
+           ============================================================ */
+        .form-container {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f7;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .form-container h2 span { color: #D4AF37; }
+
+        .form-container p {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #0b1f2a;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: #f8f9fa;
+            transition: 0.2s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: 2px solid #D4AF37;
+            background: #ffffff;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: #D4AF37;
+            color: #0b1f2a;
+            border: none;
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* ============================================================
+           WHATSAPP FLOATING BUTTON
+           ============================================================ */
+        .wa-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: #25D366;
+            color: white;
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 999;
+            font-size: 0.95rem;
+        }
+
+        .wa-float:hover { transform: scale(1.05); }
+
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 2.2rem; }
+            .contact-method { padding: 30px; }
+            .form-container { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav>
+        <div class="logo">
+            <img src="img/drecot-logo.png" alt="Drecot Printing Press Logo" class="logo-img">
+            <div class="logo-text">
+                <span class="brand-name">Drecot <span>Printing</span></span>
+                <span class="tagline">Press &amp; Services</span>
+            </div>
+        </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://kwashate.netlify.app" class="nav-cta">KWASHATE</a>
+        </div>
+    </nav>
+
+    <!-- ===== HERO HEADER ===== -->
+    <header class="page-header">
+        <h1>Contact <span>Us</span></h1>
+        <p class="tagline">
+            Have a question, a custom printing request, or a business inquiry? We're here to help.
+        </p>
+    </header>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <section class="container">
+
+        <!-- ===== INTRODUCTION ===== -->
+        <div class="form-container" style="text-align: center; margin-bottom: 40px;">
+            <h2>Get In <span>Touch</span></h2>
+            <p>We respond to all inquiries within 24 hours.</p>
+        </div>
+
+        <!-- ===== CONTACT METHODS ===== -->
+        <div class="contact-grid">
+            <div class="contact-method">
+                <span class="icon">📞</span>
+                <h3>Phone</h3>
+                <p><a href="tel:2348039661354">08039661354</a></p>
+            </div>
+            <div class="contact-method">
+                <span class="icon">📱</span>
+                <h3>WhatsApp</h3>
+                <p><a href="https://wa.me/2348039661354">Chat with us instantly</a></p>
+            </div>
+            <div class="contact-method">
+                <span class="icon">📧</span>
+                <h3>Email</h3>
+                <p><a href="mailto:drecotprintingpress@gmail.com">drecotprintingpress@gmail.com</a></p>
+            </div>
+        </div>
+
+        <!-- ===== CONTACT FORM ===== -->
+        <div class="form-container">
+            <h2>Send Us a <span style="color:#D4AF37;">Message</span></h2>
+            <p>Fill out the form below and we'll get back to you within 24 hours.</p>
+            
+            <form action="https://formspree.io/f/mvoqjwlz" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your printing request or inquiry..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+            <p style="font-size: 0.8rem; color: #7f8c8d; text-align: center; margin-top: 12px;">We respect your privacy. Your information will not be shared.</p>
+        </div>
+    </section>
+
+    <!-- ===== WHATSAPP FLOATING BUTTON ===== -->
+    <a href="https://wa.me/2348039661354?text=Hello%20Drecot%20Printing%20Press!%20I%20need%20a%20quote." class="wa-float">💬 Chat with us</a>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navLinks");
+            menu.classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
